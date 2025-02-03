@@ -82,4 +82,14 @@ public class PostController {
                  return;
              }
        }
+       @DeleteMapping
+       public  void deleteall()
+       {
+             try {
+                followeRepository.deleteAll();
+             } catch (Exception e) {
+                   System.out.println(e);
+                  return ;
+             }
+       }
 }
