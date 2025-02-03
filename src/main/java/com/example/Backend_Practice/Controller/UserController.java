@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.Backend_Practice.Model.User;
+import com.example.Backend_Practice.Repository.PostRepository;
 import com.example.Backend_Practice.Repository.UserRepository;
 import com.example.Backend_Practice.Services.UserService;
 
@@ -28,6 +29,8 @@ public class UserController {
          private UserService userService;
          @Autowired
          private UserRepository userRepository;
+         @Autowired
+         private PostRepository postrepository;
          @Async
          @PostMapping
          public ResponseEntity<User>addUser(@RequestBody User user)
@@ -75,6 +78,16 @@ public class UserController {
                     userRepository.deleteById(id);
                 } catch (Exception e) {
                      return;
+                }
+         }
+         @DeleteMapping
+         public void deletalluser(@PathVariable UUID id)
+         {
+                try {
+                    postrepository.deleteUserById(id);
+                    userRepository.deleteById(id);
+                } catch (Exception e) {
+                    return;
                 }
          }
        

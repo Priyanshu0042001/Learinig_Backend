@@ -21,4 +21,8 @@ public interface PostRepository extends JpaRepository<Post,UUID> {
        @Modifying
        @Query(value = "Delete from follower_db where post_id=?1",nativeQuery = true)
        public void deletebyNotesId(UUID notes_id);  
-}
+       @Transactional
+       @Modifying
+       @Query(value = "Delete from follower_db where user_id=?1",nativeQuery = true)
+       public void deleteUserById(UUID id);
+}    
