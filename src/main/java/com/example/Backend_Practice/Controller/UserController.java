@@ -80,7 +80,7 @@ public class UserController {
                      return;
                 }
          }
-         @DeleteMapping
+         @DeleteMapping("/del/{id}")
          public void deletalluser(@PathVariable UUID id)
          {
                 try {
